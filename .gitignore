@@ -15,7 +15,6 @@ build/
 .env.production.local
 
 # Prisma
-generated/
 prisma/*.db
 prisma/*.db-journal
 
