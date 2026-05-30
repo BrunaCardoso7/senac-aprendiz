@@ -1,3 +1,9 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+{
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "prisma",
+      "@prisma/engines",
+      "msw"
+    ]
+  }
+}
