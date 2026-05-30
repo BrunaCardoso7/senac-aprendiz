@@ -92,7 +92,7 @@ export function LoginModal() {
             <Button
               type="submit"
               disabled={isPending}
-              className="w-full h-12 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base"
+              className="w-full h-12 bg-[#e67e22] hover:bg-[#d35400] text-white font-semibold rounded-lg mt-6"
             >
               {isPending ? "Entrando..." : "Entrar"}
             </Button>
