@@ -9,8 +9,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import { useAuth } from "@/context/auth-context"
+import Image from "next/image"
 
-export function LoginModal() {
+export function SigninModal() {
   const [showPassword, setShowPassword] = useState(false)
   const [matricula, setMatricula] = useState("")
   const [senha, setSenha] = useState("")
@@ -33,8 +34,21 @@ export function LoginModal() {
     <>
       <Card className="w-full max-w-md shadow-xl rounded-2xl">
         <CardHeader className="text-center pb-2">
+          
           <CardTitle className="text-2xl font-bold text-blue-900">
-            Entrar
+            <Image
+              src="/logo-white.png"
+              alt="Logo"
+              width={90}
+              height={90}
+              className="mx-auto"
+            />
+            <CardTitle className="text-2xl font-bold text-blue-900">Senac Aprendiz</CardTitle>
+            <div className="flex items-center gap-4 py-2">
+              <div className="flex-1 h-px bg-gray-200" />
+              <span className="text-sm text-gray-400">Sua jornada profissional começa aqui.</span>
+              <div className="flex-1 h-px bg-gray-200" />
+            </div>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -46,6 +60,7 @@ export function LoginModal() {
               <div className="relative">
                 <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <Input
+                  required
                   id="matricula"
                   type="text"
                   placeholder="Digite sua matrícula"
@@ -63,6 +78,7 @@ export function LoginModal() {
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <Input
+                  required
                   id="senha"
                   type={showPassword ? "text" : "password"}
                   placeholder="Digite sua senha"
@@ -85,9 +101,9 @@ export function LoginModal() {
               <p className="text-sm text-red-500 text-center">{error.message}</p>
             )}
 
-            <a href="#" className="inline-block text-sm text-blue-600 hover:text-blue-700 hover:underline">
+            {/* <a href="#" className="inline-block text-sm text-blue-600 hover:text-blue-700 hover:underline">
               Esqueci minha senha
-            </a>
+            </a> */}
 
             <Button
               type="submit"

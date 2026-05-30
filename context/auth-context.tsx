@@ -1,6 +1,7 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 type User = {
   id: string
@@ -57,7 +58,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch (e) {
       }
     }
-
+    toast.success('Login realizado com sucesso!')
     setUser(data.user)
     router.push('/senac')
   }

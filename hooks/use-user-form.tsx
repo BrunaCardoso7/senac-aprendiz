@@ -8,12 +8,13 @@ import { toast } from "sonner"
 export default function useUserForm() {
   const router = useRouter()
 
-  const form = useForm<UserFormData>({
+  const form = useForm<any>({
     resolver: zodResolver(userSchema),
     defaultValues: {
         name: '',
         matricula: '',
         password: '',
+        confirmPassword: '', // 👈 só isso
     },
   })
 
@@ -34,6 +35,7 @@ export default function useUserForm() {
       name: values.name,
       matricula: values.matricula,
       password: values.password,
+      confirmPassword: values.password,
     }
 
     createMutation.mutate(payload, {
