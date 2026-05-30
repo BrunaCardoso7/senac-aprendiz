@@ -1,10 +1,10 @@
 import { BalanceCard } from "@/components/global/balance-card";
 import CardFinanceControl from "@/components/global/card-finance-control";
 import CardGoals from "@/components/global/card-goals";
+import EducationDetail from "@/components/global/education-detail";
 import FinanceCard from "@/components/global/finance-card";
 import { Button } from "@base-ui/react";
 import { CirclePlus } from "lucide-react";
-
 export default function SignupPage() {
   return (
    <div className="flex-1 mt-6 px-4 py-24 space-y-6">
@@ -22,7 +22,8 @@ export default function SignupPage() {
     </Button>
     <FinanceCard />
     <CardGoals />
-    <CardFinanceControl/>
+    <CardFinanceControl />
+    <EducationDetail />
   </div>
   )
 }
