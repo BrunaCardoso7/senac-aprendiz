@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/prisma/seed'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
+import { prisma } from '@/lib/prisma'
 
 const loginSchema = z.object({
   matricula: z.string(),
