@@ -7,7 +7,7 @@ import { DollarSign } from "lucide-react";
 export default function SignupPage() {
   return (
    <div className=""> 
-      <main className="">
+      <main className="" suppressHydrationWarning>
         <DashboardHeader
           dayOfMonth={12}
           userId="12345"
