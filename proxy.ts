@@ -1,14 +1,13 @@
+// proxy.ts
 import { NextRequest, NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET!
 
-// rotas que exigem login
 const PROTECTED = ['/dashboard', '/perfil']
-// rotas que não podem ser acessadas logado
 const AUTH_ONLY = ['/registre-se', '/']
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {  // ← era "middleware", agora "proxy"
   const token = req.cookies.get('token')?.value
   const { pathname } = req.nextUrl
 

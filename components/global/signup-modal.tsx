@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useRouter } from "next/navigation"
 import useUserForm from "@/hooks/use-user-form"
 
-export default function SignupForm() {
+export function SignupModal() {
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
