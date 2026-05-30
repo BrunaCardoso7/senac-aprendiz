@@ -3,7 +3,9 @@
     "onlyBuiltDependencies": [
       "prisma",
       "@prisma/engines",
-      "msw"
+      "msw",
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }
