@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const parsed = loginSchema.safeParse(body)
-
+    console.log("DATABASE_URL:", process.env.DATABASE_URL); 
     if (!parsed.success) {
       return NextResponse.json({ message: 'Dados inválidos' }, { status: 400 })
     }

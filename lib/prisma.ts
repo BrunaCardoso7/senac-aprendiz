@@ -1,26 +1,23 @@
 import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { Pool } from "pg";
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
+declare global {
+  var prisma: PrismaClient | undefined;
+}
 
-function createPrismaClient() {
+function makePrisma() {
   const connectionString = process.env.DATABASE_URL;
 
-  if (!connectionString) {
-    throw new Error("DATABASE_URL não definida nas variáveis de ambiente");
-  }
+  console.log("[prisma] DATABASE_URL presente:", !!connectionString);
 
-  const pool = new Pool({
+  const adapter = new PrismaPg({
     connectionString,
     ssl: { rejectUnauthorized: false }, // obrigatório no Render
   });
 
-  const adapter = new PrismaPg(pool);
-
   return new PrismaClient({ adapter });
 }
 
-export const prisma = globalForPrisma.prisma ?? createPrismaClient();
+export const prisma = global.prisma ?? makePrisma();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== "production") global.prisma = prisma;
