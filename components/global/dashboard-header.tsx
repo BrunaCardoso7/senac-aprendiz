@@ -29,10 +29,10 @@ export function DashboardHeader({
 }: DashboardHeaderProps) {
   const {logout} = useAuth()
   return (
-    <header className="rounded-bl-2xl rounded-br-2xl bg-blue-600 p-4">
+    <header className="rounded-bl-2xl rounded-br-2xl bg-[#1a6bb5] p-4">
       <div className="flex items-start justify-between">
         <UserGreeting dayOfMonth={dayOfMonth} userId={userId} />
-        <Button className=" hover:bg-blue-700 text-white font-bold p-2 rounded" onClick={() => logout()}>
+        <Button className=" hover:bg-blue-600 text-white font-bold p-2 rounded" onClick={() => logout()}>
           <LogOut className="text-white" />
         </Button>
       </div>
