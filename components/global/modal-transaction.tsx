@@ -38,6 +38,13 @@ export function AddTransactionModal() {
   } = form
 
   const transactionType = watch("tipo_transacao")
+  const categoriaValue = watch("categoria")
+
+  useEffect(() => {
+    // debug: veja se o valor selecionado está sendo propagado ao form
+    console.log("categoria (watch)", categoriaValue)
+  }, [categoriaValue])
+
   const [valorDisplay, setValorDisplay] = useState("")
   const handleMoneyChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -122,9 +129,13 @@ export function AddTransactionModal() {
             </Label>
 
             <div className="relative">
-              <Select>
+              <Select
+                onValueChange={(value: any) =>
+                  setValue("categoria", value, { shouldValidate: true, shouldDirty: true })
+                }
+              >
                 <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <SelectTrigger {...register("categoria")} className="pl-10 border-gray-200 focus:border-blue-500 focus:ring-blue-500 w-full">
+                <SelectTrigger className="pl-10 border-gray-200 focus:border-blue-500 focus:ring-blue-500 w-full">
                   <SelectValue placeholder="Selecione uma categoria" />
                 </SelectTrigger>
                 <SelectContent>
@@ -141,6 +152,8 @@ export function AddTransactionModal() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+              {/* hidden input registered so react-hook-form knows the field exists for validation/errors */}
+              <input type="hidden" {...register("categoria")} />
             </div>
 
             {errors.categoria && (

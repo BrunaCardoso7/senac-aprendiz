@@ -1,6 +1,6 @@
 import { SubHeader } from "@/components/global/sub-header";
 
-export default function SignupLayout({
+export default function FinancasLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
