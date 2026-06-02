@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Transacao: 'Transacao'
+  Transacao: 'Transacao',
+  Meta: 'Meta'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -92,6 +93,19 @@ export const TransacaoScalarFieldEnum = {
 } as const
 
 export type TransacaoScalarFieldEnum = (typeof TransacaoScalarFieldEnum)[keyof typeof TransacaoScalarFieldEnum]
+
+
+export const MetaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  meta: 'meta',
+  valor: 'valor',
+  valor_atual: 'valor_atual',
+  cor: 'cor',
+  createdAt: 'createdAt'
+} as const
+
+export type MetaScalarFieldEnum = (typeof MetaScalarFieldEnum)[keyof typeof MetaScalarFieldEnum]
 
 
 export const SortOrder = {

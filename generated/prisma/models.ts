@@ -10,4 +10,5 @@
  */
 export type * from './models/User'
 export type * from './models/Transacao'
+export type * from './models/Meta'
 export type * from './commonInputTypes'

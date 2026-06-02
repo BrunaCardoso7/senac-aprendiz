@@ -19,6 +19,7 @@ model User {
   name  String?
   password String
   transacoes Transacao[]
+  metas Meta[]
 } 
 
 enum TipoTransacao {
@@ -34,4 +35,17 @@ model Transacao {
   data      DateTime 
   descricao String?
   tipo_transacao    TipoTransacao @default(ENTRADA)
+  @@index([userId, tipo_transacao])
+}
+
+model Meta {
+  id       String @id @default(uuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id])
+  meta     String
+  valor    Float
+  valor_atual     Float
+  cor String?
+  createdAt   DateTime @default(now())
+  @@index([userId])
 }

@@ -385,7 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  Transacao: 'Transacao'
+  Transacao: 'Transacao',
+  Meta: 'Meta'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "transacao"
+    modelProps: "user" | "transacao" | "meta"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +554,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Meta: {
+      payload: Prisma.$MetaPayload<ExtArgs>
+      fields: Prisma.MetaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MetaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MetaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        findFirst: {
+          args: Prisma.MetaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MetaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        findMany: {
+          args: Prisma.MetaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>[]
+        }
+        create: {
+          args: Prisma.MetaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        createMany: {
+          args: Prisma.MetaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MetaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>[]
+        }
+        delete: {
+          args: Prisma.MetaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        update: {
+          args: Prisma.MetaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        deleteMany: {
+          args: Prisma.MetaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MetaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MetaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>[]
+        }
+        upsert: {
+          args: Prisma.MetaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MetaPayload>
+        }
+        aggregate: {
+          args: Prisma.MetaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMeta>
+        }
+        groupBy: {
+          args: Prisma.MetaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MetaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MetaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -613,6 +688,19 @@ export const TransacaoScalarFieldEnum = {
 } as const
 
 export type TransacaoScalarFieldEnum = (typeof TransacaoScalarFieldEnum)[keyof typeof TransacaoScalarFieldEnum]
+
+
+export const MetaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  meta: 'meta',
+  valor: 'valor',
+  valor_atual: 'valor_atual',
+  cor: 'cor',
+  createdAt: 'createdAt'
+} as const
+
+export type MetaScalarFieldEnum = (typeof MetaScalarFieldEnum)[keyof typeof MetaScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -826,6 +914,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   transacao?: Prisma.TransacaoOmit
+  meta?: Prisma.MetaOmit
 }
 
 /* Types for Logging */

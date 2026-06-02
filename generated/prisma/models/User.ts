@@ -175,6 +175,7 @@ export type UserWhereInput = {
   name?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringFilter<"User"> | string
   transacoes?: Prisma.TransacaoListRelationFilter
+  metas?: Prisma.MetaListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -183,6 +184,7 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrder
   transacoes?: Prisma.TransacaoOrderByRelationAggregateInput
+  metas?: Prisma.MetaOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -194,6 +196,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringFilter<"User"> | string
   transacoes?: Prisma.TransacaoListRelationFilter
+  metas?: Prisma.MetaListRelationFilter
 }, "id" | "matricula">
 
 export type UserOrderByWithAggregationInput = {
@@ -222,6 +225,7 @@ export type UserCreateInput = {
   name?: string | null
   password: string
   transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -230,6 +234,7 @@ export type UserUncheckedCreateInput = {
   name?: string | null
   password: string
   transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -238,6 +243,7 @@ export type UserUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -246,6 +252,7 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -317,11 +324,26 @@ export type UserUpdateOneRequiredWithoutTransacoesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTransacoesInput, Prisma.UserUpdateWithoutTransacoesInput>, Prisma.UserUncheckedUpdateWithoutTransacoesInput>
 }
 
+export type UserCreateNestedOneWithoutMetasInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMetasInput, Prisma.UserUncheckedCreateWithoutMetasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMetasInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMetasNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMetasInput, Prisma.UserUncheckedCreateWithoutMetasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMetasInput
+  upsert?: Prisma.UserUpsertWithoutMetasInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMetasInput, Prisma.UserUpdateWithoutMetasInput>, Prisma.UserUncheckedUpdateWithoutMetasInput>
+}
+
 export type UserCreateWithoutTransacoesInput = {
   id?: string
   matricula: string
   name?: string | null
   password: string
+  metas?: Prisma.MetaCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTransacoesInput = {
@@ -329,6 +351,7 @@ export type UserUncheckedCreateWithoutTransacoesInput = {
   matricula: string
   name?: string | null
   password: string
+  metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTransacoesInput = {
@@ -352,6 +375,7 @@ export type UserUpdateWithoutTransacoesInput = {
   matricula?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTransacoesInput = {
@@ -359,6 +383,55 @@ export type UserUncheckedUpdateWithoutTransacoesInput = {
   matricula?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutMetasInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutMetasInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutMetasInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMetasInput, Prisma.UserUncheckedCreateWithoutMetasInput>
+}
+
+export type UserUpsertWithoutMetasInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMetasInput, Prisma.UserUncheckedUpdateWithoutMetasInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMetasInput, Prisma.UserUncheckedCreateWithoutMetasInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMetasInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMetasInput, Prisma.UserUncheckedUpdateWithoutMetasInput>
+}
+
+export type UserUpdateWithoutMetasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMetasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -368,10 +441,12 @@ export type UserUncheckedUpdateWithoutTransacoesInput = {
 
 export type UserCountOutputType = {
   transacoes: number
+  metas: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transacoes?: boolean | UserCountOutputTypeCountTransacoesArgs
+  metas?: boolean | UserCountOutputTypeCountMetasArgs
 }
 
 /**
@@ -391,6 +466,13 @@ export type UserCountOutputTypeCountTransacoesArgs<ExtArgs extends runtime.Types
   where?: Prisma.TransacaoWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMetasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MetaWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -398,6 +480,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   password?: boolean
   transacoes?: boolean | Prisma.User$transacoesArgs<ExtArgs>
+  metas?: boolean | Prisma.User$metasArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -425,6 +508,7 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "matricula" | "name" | "password", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transacoes?: boolean | Prisma.User$transacoesArgs<ExtArgs>
+  metas?: boolean | Prisma.User$metasArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -434,6 +518,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     transacoes: Prisma.$TransacaoPayload<ExtArgs>[]
+    metas: Prisma.$MetaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -835,6 +920,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   transacoes<T extends Prisma.User$transacoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$transacoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  metas<T extends Prisma.User$metasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$metasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MetaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1282,6 +1368,30 @@ export type User$transacoesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.TransacaoScalarFieldEnum | Prisma.TransacaoScalarFieldEnum[]
+}
+
+/**
+ * User.metas
+ */
+export type User$metasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Meta
+   */
+  select?: Prisma.MetaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Meta
+   */
+  omit?: Prisma.MetaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MetaInclude<ExtArgs> | null
+  where?: Prisma.MetaWhereInput
+  orderBy?: Prisma.MetaOrderByWithRelationInput | Prisma.MetaOrderByWithRelationInput[]
+  cursor?: Prisma.MetaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MetaScalarFieldEnum | Prisma.MetaScalarFieldEnum[]
 }
 
 /**

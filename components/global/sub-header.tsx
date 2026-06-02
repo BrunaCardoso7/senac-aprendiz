@@ -20,7 +20,7 @@ export function SubHeader({ title, onBack }: PageHeaderProps) {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#1a6bb5] w-full">
+    <header className="fixed top-0 left-0 z-50 right-0 bg-[#1a6bb5] w-full">
       <div className="flex items-center gap-3 px-4 py-6">
         <button
           onClick={handleBack}

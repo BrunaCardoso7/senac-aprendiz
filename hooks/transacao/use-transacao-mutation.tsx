@@ -1,7 +1,6 @@
 'use client'
 
 import createTransacao from '@/server/services/create-transacao'
-import createUser from '@/server/services/create-user'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 
@@ -11,8 +10,11 @@ export function useCreateTransacaoMutation() {
     mutationFn: createTransacao,
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
-        queryKey: ['transacao'],
+        queryKey: ["transacao", "resumo", variables.userId],
       })
-  },
+      queryClient.invalidateQueries({
+        queryKey: ["transacao", variables.userId],
+      })
+    },
   })
 }

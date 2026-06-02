@@ -1,7 +1,8 @@
-import { TransacaoSchema } from "../schema/transacao-schema"
+import { MetaSchema } from "../schema/meta-schema"
 
-async function createTransacao(data: TransacaoSchema) {
-  const res = await fetch("/api/transacao", {
+async function createMeta(data: MetaSchema) {
+
+  const res = await fetch("/api/meta", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,4 +19,4 @@ async function createTransacao(data: TransacaoSchema) {
   return response
 }
 
-export default createTransacao
+export default createMeta

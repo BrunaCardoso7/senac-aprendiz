@@ -51,3 +51,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Transacao = Prisma.TransacaoModel
+/**
+ * Model Meta
+ * 
+ */
+export type Meta = Prisma.MetaModel
