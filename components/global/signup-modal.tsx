@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useRouter } from "next/navigation"
-import useUserForm from "@/hooks/use-user-form"
+import useUserForm from "@/hooks/user/use-user-form"
 import Image from "next/image"
 
 export function SignupModal() {

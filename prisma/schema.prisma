@@ -18,4 +18,20 @@ model User {
   matricula String  @unique
   name  String?
   password String
+  transacoes Transacao[]
 } 
+
+enum TipoTransacao {
+  ENTRADA
+  SAIDA
+}
+model Transacao {
+  id       String @id @default(uuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id])
+  categoria String
+  valor     Float
+  data      DateTime 
+  descricao String?
+  tipo_transacao    TipoTransacao @default(ENTRADA)
+}

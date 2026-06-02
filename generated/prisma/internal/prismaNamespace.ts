@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Transacao: 'Transacao'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "user" | "transacao"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Transacao: {
+      payload: Prisma.$TransacaoPayload<ExtArgs>
+      fields: Prisma.TransacaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TransacaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TransacaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        findFirst: {
+          args: Prisma.TransacaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TransacaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        findMany: {
+          args: Prisma.TransacaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>[]
+        }
+        create: {
+          args: Prisma.TransacaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        createMany: {
+          args: Prisma.TransacaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TransacaoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>[]
+        }
+        delete: {
+          args: Prisma.TransacaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        update: {
+          args: Prisma.TransacaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.TransacaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TransacaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TransacaoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>[]
+        }
+        upsert: {
+          args: Prisma.TransacaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransacaoPayload>
+        }
+        aggregate: {
+          args: Prisma.TransacaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTransacao>
+        }
+        groupBy: {
+          args: Prisma.TransacaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransacaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TransacaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TransacaoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -527,6 +602,19 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const TransacaoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  categoria: 'categoria',
+  valor: 'valor',
+  data: 'data',
+  descricao: 'descricao',
+  tipo_transacao: 'tipo_transacao'
+} as const
+
+export type TransacaoScalarFieldEnum = (typeof TransacaoScalarFieldEnum)[keyof typeof TransacaoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -568,6 +656,48 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TipoTransacao'
+ */
+export type EnumTipoTransacaoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoTransacao'>
+    
+
+
+/**
+ * Reference to a field of type 'TipoTransacao[]'
+ */
+export type ListEnumTipoTransacaoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoTransacao[]'>
     
 
 
@@ -695,6 +825,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  transacao?: Prisma.TransacaoOmit
 }
 
 /* Types for Logging */
