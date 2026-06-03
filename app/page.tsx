@@ -10,9 +10,9 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    // Se usuário está logado, redireciona para /senac
+    // Se usuário está logado, redireciona para /senac/home
     if (user && !isLoading) {
-      router.push('/senac')
+      router.push('/senac/home')
     }
   }, [user, isLoading, router])
 

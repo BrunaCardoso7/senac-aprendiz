@@ -7,9 +7,9 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const token = request.cookies.get('token')?.value
 
-  // Se tem token e tenta acessar rota pública (login/signup), redireciona para /senac
+  // Se tem token e tenta acessar rota pública (login/signup), redireciona para /senac/home
   if (token && publicRoutes.includes(pathname)) {
-    return NextResponse.redirect(new URL('/senac', request.url))
+    return NextResponse.redirect(new URL('/senac/home', request.url))
   }
 
   // Se não tem token e tenta acessar rota privada, redireciona para login
