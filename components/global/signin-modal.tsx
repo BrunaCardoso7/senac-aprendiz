@@ -34,22 +34,19 @@ export function SigninModal() {
     <>
       <Card className="w-full max-w-md shadow-xl rounded-2xl">
         <CardHeader className="text-center pb-2">
-          
-          <CardTitle className="text-2xl font-bold text-blue-900">
-            <Image
-              src="/logo-white.png"
-              alt="Logo"
-              width={90}
-              height={90}
-              className="mx-auto"
-            />
-            <CardTitle className="text-2xl font-bold text-blue-900">Senac Aprendiz</CardTitle>
-            <div className="flex items-center gap-4 py-2">
-              <div className="flex-1 h-px bg-gray-200" />
-              <span className="text-sm text-gray-400">Sua jornada profissional começa aqui.</span>
-              <div className="flex-1 h-px bg-gray-200" />
-            </div>
-          </CardTitle>
+          <Image
+            src="/logo-white.png"
+            alt="Logo"
+            width={90}
+            height={90}
+            className="mx-auto mb-4"
+          />
+          <CardTitle className="text-2xl font-bold text-blue-900">Senac Aprendiz</CardTitle>
+          <div className="flex items-center gap-4 py-2">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="text-sm text-gray-400">Sua jornada profissional começa aqui.</span>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
