@@ -141,6 +141,7 @@ export function AddTransactionModal() {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Selecione uma categoria:</SelectLabel>
+                    <SelectItem value="salario">Salário</SelectItem>
                     <SelectItem value="transporte">Transporte</SelectItem>
                     <SelectItem value="alimentacao">Alimentação</SelectItem>
                     <SelectItem value="lazer">Lazer</SelectItem>

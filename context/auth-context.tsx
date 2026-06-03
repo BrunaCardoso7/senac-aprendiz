@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     toast.success('Login realizado com sucesso!')
     setUser(data.user)
-    router.push('/senac')
+    router.push('/senac/home')
   }
 
   async function logout() {

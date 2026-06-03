@@ -1,7 +1,18 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { useDeleteMetaMutation } from "@/hooks/meta/use-meta-delete-mutation"
+import { toast } from "sonner"
 
 interface Meta {
   id: string
@@ -35,12 +46,37 @@ export function CardGoalsList({
   onNext,
   onDelete,
 }: CardGoalsListProps) {
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [selectedMetaId, setSelectedMetaId] = useState<string | null>(null)
+
   const formatCurrency = (value: number) =>
     value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
 
   const getProgresso = (valorAtual: number, valor: number) => {
     if (valor === 0) return 0
     return Math.min((valorAtual / valor) * 100, 100)
+  }
+
+  const deleteMutation = useDeleteMetaMutation()
+
+  const handleDeleteClick = (metaId: string) => {
+    setSelectedMetaId(metaId)
+    setDeleteDialogOpen(true)
+  }
+
+  const confirmDelete = () => {
+    if (!selectedMetaId) return
+
+    deleteMutation.mutate(selectedMetaId, {
+      onSuccess: () => {
+        toast.success('Meta deletada com sucesso!')
+        setDeleteDialogOpen(false)
+        setSelectedMetaId(null)
+      },
+      onError: () => {
+        toast.error('Erro ao deletar meta')
+      },
+    })
   }
 
   const mesFormatado = new Date(mesAtual + '-01T00:00:00').toLocaleString('pt-BR', {
@@ -107,8 +143,9 @@ export function CardGoalsList({
                   </div>
                 </div>
                 <button
-                  onClick={() => onDelete?.(meta.id)}
-                  className="p-2 ml-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors shrink-0"
+                  onClick={() => handleDeleteClick(meta.id)}
+                  disabled={deleteMutation.isPending}
+                  className="p-2 ml-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Excluir meta"
                 >
                   <Trash2 className="h-5 w-5" />
@@ -118,6 +155,33 @@ export function CardGoalsList({
           })}
         </div>
       )}
+
+      {/* Dialog de confirmação de exclusão */}
+      <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Confirmar Exclusão</DialogTitle>
+            <DialogDescription>
+              Tem certeza que deseja deletar esta meta? Esta ação não pode ser desfeita.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setDeleteDialogOpen(false)}
+            >
+              Cancelar
+            </Button>
+            <Button
+              onClick={confirmDelete}
+              disabled={deleteMutation.isPending}
+              className="bg-red-500 hover:bg-red-600 text-white"
+            >
+              {deleteMutation.isPending ? 'Deletando...' : 'Deletar'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
