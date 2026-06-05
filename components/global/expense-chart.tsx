@@ -42,6 +42,8 @@ const categoryLabels: Record<string, string> = {
 interface ExpenseData {
   categoria: string
   valor: number
+tipo_transacao: string // 👈 adiciona
+
 }
 
 interface ExpenseChartProps {
@@ -50,7 +52,9 @@ interface ExpenseChartProps {
 
 export function ExpenseChart({ data }: ExpenseChartProps) {
   // Agrupar dados por categoria
-  const groupedData = data.reduce((acc, item) => {
+  const groupedData = data
+  .filter((item) => item.tipo_transacao === "SAIDA") // 👈 só despesas
+  .reduce((acc, item) => {
     const existing = acc.find((d) => d.categoria === item.categoria)
     if (existing) {
       existing.valor += item.valor
