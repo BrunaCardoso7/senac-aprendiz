@@ -18,23 +18,74 @@ type AuthContextType = {
 
 export const AuthContext = createContext<AuthContextType | null>(null)
 
+const TOKEN_KEY = 'token'
+const USER_KEY = 'user'
+
+const getStoredToken = () => {
+  if (typeof window === 'undefined') return null
+  return localStorage.getItem(TOKEN_KEY)
+}
+
+const getStoredUser = (): User | null => {
+  if (typeof window === 'undefined') return null
+  try {
+    const raw = localStorage.getItem(USER_KEY)
+    return raw ? JSON.parse(raw) : null
+  } catch {
+    return null
+  }
+}
+
+const setStoredUser = (user: User) => {
+  localStorage.setItem(USER_KEY, JSON.stringify(user))
+}
+
+const clearStorage = () => {
+  localStorage.removeItem(TOKEN_KEY)
+  localStorage.removeItem(USER_KEY)
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
+  // inicia com o usuário do localStorage — sem flash
+  const [user, setUser] = useState<User | null>(getStoredUser)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
 
-  // busca usuário logado ao carregar
   useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    const token = getStoredToken()
 
+    if (!token) {
+      setIsLoading(false)
+      return
+    }
+
+    // valida o token com o servidor
     fetch('/api/auth/me', {
-      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      headers: { Authorization: `Bearer ${token}` },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.user) setUser(data.user)
+      .then(async (res) => {
+        if (res.status === 401) {
+          // token expirado ou inválido — desloga
+          clearStorage()
+          setUser(null)
+          toast.error('Sessão expirada. Faça login novamente.')
+          router.push('/')
+          return
+        }
+
+        const data = await res.json()
+
+        if (data.user) {
+          setUser(data.user)
+          setStoredUser(data.user) // mantém localStorage atualizado
+        } else {
+          clearStorage()
+          setUser(null)
+        }
       })
-      .catch(() => {})
+      .catch(() => {
+        // erro de rede — mantém usuário do localStorage pra não deslogar sem motivo
+      })
       .finally(() => setIsLoading(false))
   }, [])
 
@@ -53,21 +104,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const data = await res.json()
 
     if (data.token) {
-      try {
-        localStorage.setItem('token', data.token)
-      } catch (e) {
-      }
+      localStorage.setItem(TOKEN_KEY, data.token)
     }
+
+    if (data.user) {
+      setStoredUser(data.user)
+      setUser(data.user)
+    }
+
     toast.success('Login realizado com sucesso!')
-    setUser(data.user)
     router.push('/senac/home')
   }
 
   async function logout() {
-    await fetch('/api/auth/logout', { method: 'POST' })
-    try {
-      localStorage.removeItem('token')
-    } catch (e) {}
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {})
+    clearStorage()
     setUser(null)
     router.push('/')
   }

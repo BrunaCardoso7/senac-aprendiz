@@ -26,8 +26,6 @@ interface MonthlyHistoryChartProps {
   data: MonthlyData[]
   isLoading?: boolean
   mesAtual: string
-  onPrevious: () => void
-  onNext: () => void
   title?: string
 }
 
@@ -35,8 +33,7 @@ export function MonthlyHistoryChart({
   data,
   isLoading,
   mesAtual,
-  onPrevious,
-  onNext,
+ 
   title = "Histórico Mensal",
 }: MonthlyHistoryChartProps) {
   const mesFormatado = new Date(mesAtual + '-01T00:00:00').toLocaleString('pt-BR', {
@@ -49,14 +46,6 @@ export function MonthlyHistoryChart({
         <CardTitle className="text-md font-semibold text-foreground">
           Trasanções - {mesFormatado}
         </CardTitle>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="icon" className="h-8 w-8" onClick={onPrevious}>
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" className="h-8 w-8" onClick={onNext}>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
       </CardHeader>
 
       <CardContent>

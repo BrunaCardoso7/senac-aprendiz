@@ -4,6 +4,7 @@ import { ChevronLeft, LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/auth-context"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface PageHeaderProps {
   title: string
