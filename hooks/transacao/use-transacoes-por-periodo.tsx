@@ -5,8 +5,8 @@ interface Transaction {
   valor: number
   categoria: string
   data: string
+  tipo_transacao: string // 👈 adiciona
 }
-
 async function fetchTransacoesByDateRange(
   userId: string | undefined,
   dataInicio: string,
