@@ -79,8 +79,6 @@ export default function FinancaPage() {
           data={data_month ?? []}
           isLoading={isLoadingMonth}
           mesAtual={mesAtual}
-          onPrevious={() => setMesAtual((p) => navegarMes(p, 'anterior'))}
-          onNext={() => setMesAtual((p) => navegarMes(p, 'proximo'))}
         />
       ) : (
         <CardFinanceControl />
