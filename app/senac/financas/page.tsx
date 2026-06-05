@@ -183,9 +183,7 @@ export default function FinancaPage() {
               />
             </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">Nenhuma transação registrada</p>
-            </div>
+            <CardFinanceControl />
           )}
         </TabsContent>
 
