@@ -3,11 +3,13 @@ import { BalanceCard } from "@/components/global/balance-card"
 import CardFinanceControl from "@/components/global/card-finance-control"
 import CardGoals from "@/components/global/card-goals"
 import { CardGoalsList } from "@/components/global/card-goals-list"
+import { DireitosAprendiz } from "@/components/global/direitos-aprendiz"
 import EducationDetail from "@/components/global/education-detail"
 import FinanceCard from "@/components/global/finance-card"
 import { AddGoalModal } from "@/components/global/goal-modal"
 import { AddTransactionModal } from "@/components/global/modal-transaction"
 import { MonthlyHistoryChart } from "@/components/global/monthly-history-chart"
+import { PerguntasFrequentes } from "@/components/global/perguntas-frequentes"
 import { useAuth } from "@/context/auth-context"
 import { useGoalModal, useTransactionModal } from "@/context/modal-context-finance"
 import { useMetaQuery } from "@/hooks/meta/use-list-meta"
@@ -58,46 +60,9 @@ export default function FinancaPage() {
   const temMetas = data_full_metas && data_full_metas.length > 0
 
   return (
-    <div className="flex-1 mt-6 px-4 py-24 space-y-6">
-      <BalanceCard
-        saldoDisponivel={data?.saldo}
-        receitas={data?.receita}
-        despesas={data?.despesa}
-      />
-
-      <button
-        className="w-full h-12 bg-[#e67e22] hover:bg-[#d35400] flex justify-center items-center gap-6 text-white font-semibold rounded-lg"
-        onClick={openModal}
-      >
-        <CirclePlus className="h-4 w-4" />
-        Adicionar Transação
-      </button>
+    <div className="min-h-screen bg-muted/30">
+      <DireitosAprendiz />
       
-
-      {temTransacoes ? (
-        <MonthlyHistoryChart
-          data={data_month ?? []}
-          isLoading={isLoadingMonth}
-          mesAtual={mesAtual}
-        />
-      ) : (
-        <CardFinanceControl />
-      )}
-      <FinanceCard openGoalModal={openGoalModal} />
-        {temMetas ? (
-          <CardGoalsList
-            data={data_metas ?? []}
-            isLoading={isLoadingMetas}
-            mesAtual={mesAtualMeta}
-            onPrevious={() => setMesAtualMeta((p) => navegarMes(p, 'anterior'))}
-            onNext={() => setMesAtualMeta((p) => navegarMes(p, 'proximo'))}
-          />
-        ) : (
-          <CardGoals openGoalModal={openGoalModal} />
-        )}
-      <EducationDetail />
-      <AddTransactionModal />
-      <AddGoalModal />
     </div>
   )
 }
