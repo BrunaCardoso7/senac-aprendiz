@@ -2,7 +2,7 @@ import { Shield } from "lucide-react"
 
 export function SecurityNotice() {
   return (
-    <section className="rounded-xl border border-blue-100 bg-blue-50 p-5">
+    <section className="rounded-xl border border-blue-100 bg-blue-50 p-5 mb-24">
       <div className="flex items-center gap-2">
         <Shield className="size-5 text-[#1565d8]" aria-hidden="true" />
         <h2 className="text-sm font-bold text-[#0b4fa6]">Segurança dos Documentos</h2>
