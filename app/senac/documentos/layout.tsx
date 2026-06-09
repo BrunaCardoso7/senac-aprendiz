@@ -1,11 +1,14 @@
-export default function SignupLayout({
+import { SubHeader } from "@/components/global/sub-header";
+
+export default function DocumentLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+      <div className="min-h-full flex flex-col">
+        <SubHeader title="Meus Documentos" />
+        {children}
+        </div>
   );
 }
