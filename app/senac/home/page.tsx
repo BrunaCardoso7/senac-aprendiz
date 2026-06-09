@@ -4,7 +4,7 @@ import { SignupModal } from "@/components/global/signup-modal";
 
 export default function SignupPage() {
   return (
-   <div className="mx-auto w-full px-14 mb-14">
+   <div className="mx-auto w-full px-4 md:px-24 mb-14">
         <QuickAccess />
     </div>
   )

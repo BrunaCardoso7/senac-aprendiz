@@ -9,7 +9,7 @@ export function QuickAccess() {
         Acesso Rápido
       </h2>
 
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col w-full gap-3">
         {quickAccessItems.map((item) => {
           const Icon = item.icon
           return (
