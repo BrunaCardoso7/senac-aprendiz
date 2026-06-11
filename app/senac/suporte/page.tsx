@@ -6,7 +6,7 @@ import { UsefulContacts } from "@/components/global/usefull-contact";
 
 export default function SignupPage() {
   return (
-   <div className="px-24 my-24 flex flex-col gap-12">
+   <div className="px-4 my-24 flex flex-col gap-12">
         <SupportBanner />
         <ActionButtons />
         <ReportCategories />
