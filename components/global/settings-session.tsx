@@ -26,7 +26,7 @@ export function SettingsSection({ onEditProfile }: SettingsSectionProps) {
   const {logout}  = useAuth()
 
   return (
-    <section className="space-y-3">
+    <section className="space-y-3 mx-4">
       <h2 className="text-lg font-bold text-foreground">Configurações</h2>
 
       <ul className="space-y-3">
