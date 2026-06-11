@@ -15,7 +15,7 @@ export function MonthlySummary({ frequency, hours, balance }: MonthlySummaryProp
           <TrendingUp className="h-5 w-5" />
         </button>
       </div>
-      <div className="mt-3 grid grid-cols-3 gap-4">
+      <div className="mt-3 grid grid-cols-3 gap-2">
         <SummaryItem label="Frequência" value={frequency} />
         <SummaryItem label="Horas" value={hours} />
         <SummaryItem label="Saldo" value={balance} />
@@ -26,9 +26,11 @@ export function MonthlySummary({ frequency, hours, balance }: MonthlySummaryProp
 
 function SummaryItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex min-w-0 flex-col">
       <span className="text-xs text-blue-200">{label}</span>
-      <span className="text-lg font-bold text-white">{value}</span>
+      <span className="truncate text-base font-bold text-white sm:text-lg">
+        {value}
+      </span>
     </div>
   )
 }
