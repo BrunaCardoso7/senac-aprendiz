@@ -153,24 +153,24 @@ useEffect(() => {
             </div>
           </div>
 
-          <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              disabled={isLoading}
-              className="sm:w-auto"
-            >
-              Cancelar
-            </Button>
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="sm:w-auto"
-            >
-              {isLoading ? "Salvando…" : "Salvar alterações"}
-            </Button>
-          </div>
+         <div className="flex flex-col gap-3 pt-2">
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="h-12 w-full rounded-xl bg-blue-500 text-base font-semibold text-white hover:bg-blue-600 active:bg-blue-700"
+          >
+            {isLoading ? "Salvando…" : "Salvar alterações"}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onClose}
+            disabled={isLoading}
+            className="h-12 w-full rounded-xl text-base font-semibold"
+          >
+            Cancelar
+          </Button>
+        </div>  
         </form>
       </div>
     </div>
