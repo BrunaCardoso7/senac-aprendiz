@@ -8,7 +8,7 @@ interface NavItem {
   id: string
   label: string
   icon: React.ComponentType<{ className?: string }>
-  href: string // 👈 adiciona o caminho
+  href: string
 }
 
 const navItems: NavItem[] = [
@@ -24,30 +24,28 @@ export function BottomNav() {
   const router = useRouter()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-2 safe-area-pb">
-      <div className="flex items-center justify-around max-w-md mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white">
+      <div className="mx-auto flex max-w-md items-center justify-around">
         {navItems.map((item) => {
-          const isActive = pathname.startsWith(item.href) // 👈 compara com a rota atual
+          const isActive = pathname.startsWith(item.href)
           const Icon = item.icon
 
           return (
             <button
               key={item.id}
               onClick={() => router.push(item.href)}
-              className={cn(
-                "flex flex-col items-center justify-center min-w-[64px] py-1 px-2 rounded-lg transition-colors",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-              )}
+              // área mínima de 48x48px recomendada pelo Google para toque
+              className="flex flex-1 flex-col items-center justify-center gap-1 py-3 active:bg-gray-50"
             >
               <Icon
                 className={cn(
-                  "w-6 h-6 mb-1 transition-colors",
+                  "h-6 w-6 transition-colors",
                   isActive ? "text-blue-600" : "text-gray-400"
                 )}
               />
               <span
                 className={cn(
-                  "text-xs font-medium transition-colors",
+                  "text-[11px] font-medium leading-none transition-colors",
                   isActive ? "text-blue-600" : "text-gray-400"
                 )}
               >
@@ -57,6 +55,8 @@ export function BottomNav() {
           )
         })}
       </div>
+      {/* Espaço para safe area no iPhone */}
+      <div className="h-safe-area-inset-bottom bg-white" />
     </nav>
   )
 }
