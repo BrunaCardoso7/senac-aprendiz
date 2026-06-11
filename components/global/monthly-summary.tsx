@@ -8,7 +8,7 @@ interface MonthlySummaryProps {
 
 export function MonthlySummary({ frequency, hours, balance }: MonthlySummaryProps) {
   return (
-    <div className="rounded-xl border border-blue-400/30 bg-blue-400/10 p-4">
+    <div className="rounded-xl border border-blue-400/30 w-full bg-blue-400/10 p-4">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-medium text-blue-100">Resumo do Mês</h3>
         <button className="p-1 text-blue-200 hover:text-white transition-colors">
