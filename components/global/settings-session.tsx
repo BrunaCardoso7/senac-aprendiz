@@ -2,6 +2,7 @@
 
 import type { ComponentType } from "react"
 import { ChevronRight, HelpCircle, LogOut, Moon, Settings, Shield, SquarePen } from "lucide-react"
+import { useAuth } from "@/context/auth-context"
 
 interface SettingsSectionProps {
   onEditProfile: () => void
@@ -22,6 +23,7 @@ export function SettingsSection({ onEditProfile }: SettingsSectionProps) {
     { label: "Segurança da Conta", icon: Shield, iconClass: "bg-emerald-50 text-emerald-600" },
     { label: "Ajuda e Suporte", icon: HelpCircle, iconClass: "bg-amber-50 text-amber-600" },
   ]
+  const {logout}  = useAuth()
 
   return (
     <section className="space-y-3">
@@ -47,6 +49,7 @@ export function SettingsSection({ onEditProfile }: SettingsSectionProps) {
 
       <button
         type="button"
+        onClick={logout}
         className="flex w-full items-center justify-center gap-2 rounded-2xl border border-destructive/30 bg-destructive/5 px-4 py-4 font-semibold text-destructive transition-colors hover:bg-destructive/10"
       >
         <LogOut className="h-5 w-5" aria-hidden="true" />
