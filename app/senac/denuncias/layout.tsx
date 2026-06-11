@@ -1,3 +1,5 @@
+import { SubHeader } from "@/components/global/sub-header";
+
 export default function SignupLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,9 @@ export default function SignupLayout({
 }>) {
   return (
     <div>
-      <div className="min-h-full flex flex-col">{children}</div>
+      <div className="min-h-full flex flex-col">
+        <SubHeader title="Fazer Denúncia"/>
+        {children}</div>
     </div>
   );
 }

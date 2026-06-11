@@ -1,23 +1,28 @@
+"use client"
 import { AlertCircle, MessageCircle } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export function ActionButtons() {
+  const router = useRouter()
+
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-4 sm:grid-cols-1">
       <button
         type="button"
+        onClick={() => router.push("/senac/denuncias")}
         className="flex flex-col items-center gap-2 rounded-xl bg-red-500 px-6 py-5 text-center font-semibold text-white shadow-sm transition-colors hover:bg-red-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
       >
         <AlertCircle className="size-6" aria-hidden="true" />
         Fazer Denúncia
       </button>
 
-      <button
+      {/* <button
         type="button"
         className="flex flex-col items-center gap-2 rounded-xl bg-blue-500 px-6 py-5 text-center font-semibold text-white shadow-sm transition-colors hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
         <MessageCircle className="size-6" aria-hidden="true" />
         Pedir Ajuda
-      </button>
+      </button> */}
     </div>
   )
 }

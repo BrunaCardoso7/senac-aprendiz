@@ -20,7 +20,35 @@ model User {
   password String
   transacoes Transacao[]
   metas Meta[]
+  contratos Contrato[]
+  denuncias Denuncia[]
 } 
+
+model Contrato { 
+  id    String  @id @default(uuid()) 
+  userId   String
+  user     User   @relation(fields: [userId], references: [id])
+  empresa String  
+  unidade  String?
+  curso String
+  inicio DateTime
+  final DateTime
+}
+
+// schema.prisma
+model Denuncia {
+  id          String   @id @default(uuid())
+  userId      String
+  categoria   String
+  dataOcorido DateTime
+  descricao   String   @db.Text
+  testemunhas String?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("denuncias")
+}
 
 enum TipoTransacao {
   ENTRADA

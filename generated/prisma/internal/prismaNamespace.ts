@@ -385,6 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
+  Contrato: 'Contrato',
+  Denuncia: 'Denuncia',
   Transacao: 'Transacao',
   Meta: 'Meta'
 } as const
@@ -402,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "transacao" | "meta"
+    modelProps: "user" | "contrato" | "denuncia" | "transacao" | "meta"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -477,6 +479,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
+        }
+      }
+    }
+    Contrato: {
+      payload: Prisma.$ContratoPayload<ExtArgs>
+      fields: Prisma.ContratoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ContratoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ContratoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        findFirst: {
+          args: Prisma.ContratoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ContratoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        findMany: {
+          args: Prisma.ContratoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>[]
+        }
+        create: {
+          args: Prisma.ContratoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        createMany: {
+          args: Prisma.ContratoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ContratoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>[]
+        }
+        delete: {
+          args: Prisma.ContratoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        update: {
+          args: Prisma.ContratoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        deleteMany: {
+          args: Prisma.ContratoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ContratoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ContratoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>[]
+        }
+        upsert: {
+          args: Prisma.ContratoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContratoPayload>
+        }
+        aggregate: {
+          args: Prisma.ContratoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateContrato>
+        }
+        groupBy: {
+          args: Prisma.ContratoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContratoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ContratoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContratoCountAggregateOutputType> | number
+        }
+      }
+    }
+    Denuncia: {
+      payload: Prisma.$DenunciaPayload<ExtArgs>
+      fields: Prisma.DenunciaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DenunciaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DenunciaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        findFirst: {
+          args: Prisma.DenunciaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DenunciaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        findMany: {
+          args: Prisma.DenunciaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>[]
+        }
+        create: {
+          args: Prisma.DenunciaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        createMany: {
+          args: Prisma.DenunciaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DenunciaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>[]
+        }
+        delete: {
+          args: Prisma.DenunciaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        update: {
+          args: Prisma.DenunciaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        deleteMany: {
+          args: Prisma.DenunciaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DenunciaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DenunciaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>[]
+        }
+        upsert: {
+          args: Prisma.DenunciaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DenunciaPayload>
+        }
+        aggregate: {
+          args: Prisma.DenunciaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDenuncia>
+        }
+        groupBy: {
+          args: Prisma.DenunciaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DenunciaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DenunciaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DenunciaCountAggregateOutputType> | number
         }
       }
     }
@@ -677,6 +827,32 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const ContratoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  empresa: 'empresa',
+  unidade: 'unidade',
+  curso: 'curso',
+  inicio: 'inicio',
+  final: 'final'
+} as const
+
+export type ContratoScalarFieldEnum = (typeof ContratoScalarFieldEnum)[keyof typeof ContratoScalarFieldEnum]
+
+
+export const DenunciaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  categoria: 'categoria',
+  dataOcorido: 'dataOcorido',
+  descricao: 'descricao',
+  testemunhas: 'testemunhas',
+  createdAt: 'createdAt'
+} as const
+
+export type DenunciaScalarFieldEnum = (typeof DenunciaScalarFieldEnum)[keyof typeof DenunciaScalarFieldEnum]
+
+
 export const TransacaoScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -748,20 +924,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Float'
- */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-/**
- * Reference to a field of type 'Float[]'
- */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -772,6 +934,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -913,6 +1089,8 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  contrato?: Prisma.ContratoOmit
+  denuncia?: Prisma.DenunciaOmit
   transacao?: Prisma.TransacaoOmit
   meta?: Prisma.MetaOmit
 }

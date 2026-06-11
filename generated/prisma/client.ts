@@ -47,6 +47,16 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
+ * Model Contrato
+ * 
+ */
+export type Contrato = Prisma.ContratoModel
+/**
+ * Model Denuncia
+ * 
+ */
+export type Denuncia = Prisma.DenunciaModel
+/**
  * Model Transacao
  * 
  */

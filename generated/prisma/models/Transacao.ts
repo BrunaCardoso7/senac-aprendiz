@@ -455,10 +455,6 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type EnumTipoTransacaoFieldUpdateOperationsInput = {
   set?: $Enums.TipoTransacao
 }

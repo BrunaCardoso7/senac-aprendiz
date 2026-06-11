@@ -176,6 +176,8 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   transacoes?: Prisma.TransacaoListRelationFilter
   metas?: Prisma.MetaListRelationFilter
+  contratos?: Prisma.ContratoListRelationFilter
+  denuncias?: Prisma.DenunciaListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -185,6 +187,8 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   transacoes?: Prisma.TransacaoOrderByRelationAggregateInput
   metas?: Prisma.MetaOrderByRelationAggregateInput
+  contratos?: Prisma.ContratoOrderByRelationAggregateInput
+  denuncias?: Prisma.DenunciaOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -197,6 +201,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"User"> | string
   transacoes?: Prisma.TransacaoListRelationFilter
   metas?: Prisma.MetaListRelationFilter
+  contratos?: Prisma.ContratoListRelationFilter
+  denuncias?: Prisma.DenunciaListRelationFilter
 }, "id" | "matricula">
 
 export type UserOrderByWithAggregationInput = {
@@ -226,6 +232,8 @@ export type UserCreateInput = {
   password: string
   transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
   metas?: Prisma.MetaCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -235,6 +243,8 @@ export type UserUncheckedCreateInput = {
   password: string
   transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
   metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoUncheckedCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -244,6 +254,8 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
   metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -253,6 +265,8 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
   metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUncheckedUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -310,6 +324,34 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
+export type UserCreateNestedOneWithoutContratosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContratosInput, Prisma.UserUncheckedCreateWithoutContratosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContratosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutContratosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContratosInput, Prisma.UserUncheckedCreateWithoutContratosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContratosInput
+  upsert?: Prisma.UserUpsertWithoutContratosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutContratosInput, Prisma.UserUpdateWithoutContratosInput>, Prisma.UserUncheckedUpdateWithoutContratosInput>
+}
+
+export type UserCreateNestedOneWithoutDenunciasInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDenunciasInput, Prisma.UserUncheckedCreateWithoutDenunciasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDenunciasInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDenunciasNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDenunciasInput, Prisma.UserUncheckedCreateWithoutDenunciasInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDenunciasInput
+  upsert?: Prisma.UserUpsertWithoutDenunciasInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDenunciasInput, Prisma.UserUpdateWithoutDenunciasInput>, Prisma.UserUncheckedUpdateWithoutDenunciasInput>
+}
+
 export type UserCreateNestedOneWithoutTransacoesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutTransacoesInput, Prisma.UserUncheckedCreateWithoutTransacoesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutTransacoesInput
@@ -338,12 +380,126 @@ export type UserUpdateOneRequiredWithoutMetasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMetasInput, Prisma.UserUpdateWithoutMetasInput>, Prisma.UserUncheckedUpdateWithoutMetasInput>
 }
 
+export type UserCreateWithoutContratosInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutContratosInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutContratosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutContratosInput, Prisma.UserUncheckedCreateWithoutContratosInput>
+}
+
+export type UserUpsertWithoutContratosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutContratosInput, Prisma.UserUncheckedUpdateWithoutContratosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutContratosInput, Prisma.UserUncheckedCreateWithoutContratosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutContratosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutContratosInput, Prisma.UserUncheckedUpdateWithoutContratosInput>
+}
+
+export type UserUpdateWithoutContratosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutContratosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDenunciasInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDenunciasInput = {
+  id?: string
+  matricula: string
+  name?: string | null
+  password: string
+  transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
+  metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDenunciasInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDenunciasInput, Prisma.UserUncheckedCreateWithoutDenunciasInput>
+}
+
+export type UserUpsertWithoutDenunciasInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDenunciasInput, Prisma.UserUncheckedUpdateWithoutDenunciasInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDenunciasInput, Prisma.UserUncheckedCreateWithoutDenunciasInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDenunciasInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDenunciasInput, Prisma.UserUncheckedUpdateWithoutDenunciasInput>
+}
+
+export type UserUpdateWithoutDenunciasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDenunciasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
+  metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUncheckedUpdateManyWithoutUserNestedInput
+}
+
 export type UserCreateWithoutTransacoesInput = {
   id?: string
   matricula: string
   name?: string | null
   password: string
   metas?: Prisma.MetaCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTransacoesInput = {
@@ -352,6 +508,8 @@ export type UserUncheckedCreateWithoutTransacoesInput = {
   name?: string | null
   password: string
   metas?: Prisma.MetaUncheckedCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoUncheckedCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTransacoesInput = {
@@ -376,6 +534,8 @@ export type UserUpdateWithoutTransacoesInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   metas?: Prisma.MetaUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTransacoesInput = {
@@ -384,6 +544,8 @@ export type UserUncheckedUpdateWithoutTransacoesInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   metas?: Prisma.MetaUncheckedUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUncheckedUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMetasInput = {
@@ -392,6 +554,8 @@ export type UserCreateWithoutMetasInput = {
   name?: string | null
   password: string
   transacoes?: Prisma.TransacaoCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMetasInput = {
@@ -400,6 +564,8 @@ export type UserUncheckedCreateWithoutMetasInput = {
   name?: string | null
   password: string
   transacoes?: Prisma.TransacaoUncheckedCreateNestedManyWithoutUserInput
+  contratos?: Prisma.ContratoUncheckedCreateNestedManyWithoutUserInput
+  denuncias?: Prisma.DenunciaUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMetasInput = {
@@ -424,6 +590,8 @@ export type UserUpdateWithoutMetasInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMetasInput = {
@@ -432,6 +600,8 @@ export type UserUncheckedUpdateWithoutMetasInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   transacoes?: Prisma.TransacaoUncheckedUpdateManyWithoutUserNestedInput
+  contratos?: Prisma.ContratoUncheckedUpdateManyWithoutUserNestedInput
+  denuncias?: Prisma.DenunciaUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -442,11 +612,15 @@ export type UserUncheckedUpdateWithoutMetasInput = {
 export type UserCountOutputType = {
   transacoes: number
   metas: number
+  contratos: number
+  denuncias: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transacoes?: boolean | UserCountOutputTypeCountTransacoesArgs
   metas?: boolean | UserCountOutputTypeCountMetasArgs
+  contratos?: boolean | UserCountOutputTypeCountContratosArgs
+  denuncias?: boolean | UserCountOutputTypeCountDenunciasArgs
 }
 
 /**
@@ -473,6 +647,20 @@ export type UserCountOutputTypeCountMetasArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.MetaWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountContratosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContratoWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDenunciasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DenunciaWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -481,6 +669,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   transacoes?: boolean | Prisma.User$transacoesArgs<ExtArgs>
   metas?: boolean | Prisma.User$metasArgs<ExtArgs>
+  contratos?: boolean | Prisma.User$contratosArgs<ExtArgs>
+  denuncias?: boolean | Prisma.User$denunciasArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -509,6 +699,8 @@ export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transacoes?: boolean | Prisma.User$transacoesArgs<ExtArgs>
   metas?: boolean | Prisma.User$metasArgs<ExtArgs>
+  contratos?: boolean | Prisma.User$contratosArgs<ExtArgs>
+  denuncias?: boolean | Prisma.User$denunciasArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -519,6 +711,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     transacoes: Prisma.$TransacaoPayload<ExtArgs>[]
     metas: Prisma.$MetaPayload<ExtArgs>[]
+    contratos: Prisma.$ContratoPayload<ExtArgs>[]
+    denuncias: Prisma.$DenunciaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -921,6 +1115,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   transacoes<T extends Prisma.User$transacoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$transacoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   metas<T extends Prisma.User$metasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$metasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MetaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contratos<T extends Prisma.User$contratosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contratosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContratoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  denuncias<T extends Prisma.User$denunciasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$denunciasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DenunciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1392,6 +1588,54 @@ export type User$metasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.MetaScalarFieldEnum | Prisma.MetaScalarFieldEnum[]
+}
+
+/**
+ * User.contratos
+ */
+export type User$contratosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Contrato
+   */
+  select?: Prisma.ContratoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Contrato
+   */
+  omit?: Prisma.ContratoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContratoInclude<ExtArgs> | null
+  where?: Prisma.ContratoWhereInput
+  orderBy?: Prisma.ContratoOrderByWithRelationInput | Prisma.ContratoOrderByWithRelationInput[]
+  cursor?: Prisma.ContratoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContratoScalarFieldEnum | Prisma.ContratoScalarFieldEnum[]
+}
+
+/**
+ * User.denuncias
+ */
+export type User$denunciasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Denuncia
+   */
+  select?: Prisma.DenunciaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Denuncia
+   */
+  omit?: Prisma.DenunciaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DenunciaInclude<ExtArgs> | null
+  where?: Prisma.DenunciaWhereInput
+  orderBy?: Prisma.DenunciaOrderByWithRelationInput | Prisma.DenunciaOrderByWithRelationInput[]
+  cursor?: Prisma.DenunciaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DenunciaScalarFieldEnum | Prisma.DenunciaScalarFieldEnum[]
 }
 
 /**

@@ -52,6 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Contrato: 'Contrato',
+  Denuncia: 'Denuncia',
   Transacao: 'Transacao',
   Meta: 'Meta'
 } as const
@@ -80,6 +82,32 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const ContratoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  empresa: 'empresa',
+  unidade: 'unidade',
+  curso: 'curso',
+  inicio: 'inicio',
+  final: 'final'
+} as const
+
+export type ContratoScalarFieldEnum = (typeof ContratoScalarFieldEnum)[keyof typeof ContratoScalarFieldEnum]
+
+
+export const DenunciaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  categoria: 'categoria',
+  dataOcorido: 'dataOcorido',
+  descricao: 'descricao',
+  testemunhas: 'testemunhas',
+  createdAt: 'createdAt'
+} as const
+
+export type DenunciaScalarFieldEnum = (typeof DenunciaScalarFieldEnum)[keyof typeof DenunciaScalarFieldEnum]
 
 
 export const TransacaoScalarFieldEnum = {
