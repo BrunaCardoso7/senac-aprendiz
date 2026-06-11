@@ -40,7 +40,7 @@ export function DashboardHeader({
       </div>
 
       <div className="mt-4">
-        <MonthlySummary frequency={"-"} hours={"-h"} balance={balance} />
+        <MonthlySummary frequency={"-"} hours={"-"} balance={balance} />
       </div>
 
       <div className="mt-4">
