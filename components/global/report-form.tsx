@@ -31,7 +31,7 @@ export function ReportForm({ onBack, onSuccess }: ReportFormProps) {
   } = useDenunciaForm({ onSuccess })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto w-full max-w-5xl mt-14 hpx-4 py-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto w-full max-w-5xl">
 
       {/* Cabeçalho — borda e texto rosa */}
       <div

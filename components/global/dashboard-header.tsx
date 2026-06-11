@@ -5,40 +5,42 @@ import { MonthlySummary } from "./monthly-summary"
 import { DailyTip } from "./daily-tip"
 import { LogOut } from "lucide-react"
 import { Button } from "@base-ui/react"
-import Link from "next/link"
 import { useAuth } from "@/context/auth-context"
+import { useResumoTransacaoQuery } from "@/hooks/transacao/use-resumo-transacao-query"
 
 interface DashboardHeaderProps {
   dayOfMonth: number
-  userId: string |undefined
   notificationCount: number
-  frequency: string
-  hours: string
-  balance: string
   dailyTip: string
 }
 
 export function DashboardHeader({
   dayOfMonth,
-  userId,
   notificationCount,
-  frequency,
-  hours,
-  balance,
   dailyTip,
 }: DashboardHeaderProps) {
-  const {logout} = useAuth()
+  const { user, logout } = useAuth()
+
+  const { data: resumo } = useResumoTransacaoQuery(user?.id)
+
+  const balance = resumo?.saldo != null
+    ? resumo.saldo.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+    : "—"
+
   return (
     <header className="rounded-bl-2xl rounded-br-2xl bg-[#1a6bb5] p-4">
       <div className="flex items-start justify-between">
-        <UserGreeting dayOfMonth={dayOfMonth} userId={userId} />
-        <Button className=" hover:bg-blue-600 text-white font-bold p-2 rounded" onClick={() => logout()}>
+        <UserGreeting dayOfMonth={dayOfMonth} userId={user?.id} />
+        <Button
+          className="hover:bg-blue-600 text-white font-bold p-2 rounded"
+          onClick={() => logout()}
+        >
           <LogOut className="text-white" />
         </Button>
       </div>
 
       <div className="mt-4">
-        <MonthlySummary frequency={frequency} hours={hours} balance={balance} />
+        <MonthlySummary frequency={"-%"} hours={"-0"} balance={balance} />
       </div>
 
       <div className="mt-4">
