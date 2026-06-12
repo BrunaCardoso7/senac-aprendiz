@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     }))
 
     const response = await client.chat.completions.create({
-      model: "llama-3.1-8b-instant",
+      model: "llama-3.3-70b-versatile",
       max_tokens: 1024,
       messages: [
         {
