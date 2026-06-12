@@ -55,7 +55,9 @@ export const ModelName = {
   Contrato: 'Contrato',
   Denuncia: 'Denuncia',
   Transacao: 'Transacao',
-  Meta: 'Meta'
+  Meta: 'Meta',
+  Ajuda: 'Ajuda',
+  Atestado: 'Atestado'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -134,6 +136,31 @@ export const MetaScalarFieldEnum = {
 } as const
 
 export type MetaScalarFieldEnum = (typeof MetaScalarFieldEnum)[keyof typeof MetaScalarFieldEnum]
+
+
+export const AjudaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  nome: 'nome',
+  descricao: 'descricao',
+  createdAt: 'createdAt'
+} as const
+
+export type AjudaScalarFieldEnum = (typeof AjudaScalarFieldEnum)[keyof typeof AjudaScalarFieldEnum]
+
+
+export const AtestadoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  url: 'url',
+  publicId: 'publicId',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type AtestadoScalarFieldEnum = (typeof AtestadoScalarFieldEnum)[keyof typeof AtestadoScalarFieldEnum]
 
 
 export const SortOrder = {

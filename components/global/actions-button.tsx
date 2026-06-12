@@ -16,13 +16,14 @@ export function ActionButtons() {
         Fazer Denúncia
       </button>
 
-      {/* <button
+      <button
         type="button"
+        onClick={() => router.push("/senac/ajuda")}
         className="flex flex-col items-center gap-2 rounded-xl bg-blue-500 px-6 py-5 text-center font-semibold text-white shadow-sm transition-colors hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
         <MessageCircle className="size-6" aria-hidden="true" />
         Pedir Ajuda
-      </button> */}
+      </button>
     </div>
   )
 }

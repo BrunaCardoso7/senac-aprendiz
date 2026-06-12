@@ -41,7 +41,7 @@ export const quickAccessItems: any[] = [
     id: "duvidas",
     title: "Dúvidas Frequentes",
     description: "Respostas rápidas",
-    href: "/senac/seus-direitos",
+    href: "/senac/duvidas",
     icon: HelpCircle,
     iconColor: "text-amber-600",
     iconBg: "bg-amber-50",
@@ -68,7 +68,7 @@ export const quickAccessItems: any[] = [
     id: "contrato",
     title: "Meu Contrato",
     description: "Informações do contrato",
-    href: "/senac/documentos",  // ajuste se tiver rota própria
+    href: "/senac/perfil",  // ajuste se tiver rota própria
     icon: FileCheck,
     iconColor: "text-slate-600",
     iconBg: "bg-slate-100",

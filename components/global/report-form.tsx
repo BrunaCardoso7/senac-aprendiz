@@ -55,9 +55,11 @@ export function ReportForm({ onBack, onSuccess }: ReportFormProps) {
                 <SelectValue placeholder="Selecione uma categoria" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="assedio">Assédio</SelectItem>
+                <SelectItem value="assedio">Assédio Moral</SelectItem>
+                <SelectItem value="assedio">Assédio Sexual</SelectItem>
+                <SelectItem value="discriminacao">Abuso psicológico</SelectItem>
                 <SelectItem value="discriminacao">Discriminação</SelectItem>
-                <SelectItem value="fraude">Fraude</SelectItem>
+                <SelectItem value="fraude">Exploração no trabalho</SelectItem>
                 <SelectItem value="seguranca">Segurança no trabalho</SelectItem>
                 <SelectItem value="outro">Outro</SelectItem>
               </SelectContent>

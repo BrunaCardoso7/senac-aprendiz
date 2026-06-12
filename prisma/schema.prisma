@@ -20,7 +20,9 @@ model User {
   password String
   transacoes Transacao[]
   metas Meta[]
+  atestados Atestado[]
   contratos Contrato[]
+  ajudas Ajuda[]
   denuncias Denuncia[]
 } 
 
@@ -76,4 +78,30 @@ model Meta {
   cor String?
   createdAt   DateTime @default(now())
   @@index([userId])
+}
+model Ajuda {
+  id          String   @id @default(uuid())
+  userId      String
+  nome        String
+  descricao   String   @db.Text
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("ajudas")
+}
+
+model Atestado {
+  id          String   @id @default(uuid())
+  userId      String
+  titulo      String
+  descricao   String?
+  url         String
+  publicId    String
+  status      String   @default("em-analise")
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("atestados")
 }

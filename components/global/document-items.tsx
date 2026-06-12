@@ -5,9 +5,10 @@ import { Download, FileText } from "lucide-react"
 interface DocumentItemProps {
   title: string
   meta: string
+  url?: string
 }
 
-export function DocumentItem({ title, meta }: DocumentItemProps) {
+export function DocumentItem({ title, meta, url }: DocumentItemProps) {
   return (
     <div className="flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 shadow-sm">
       <div className="flex items-center gap-3">
@@ -19,13 +20,28 @@ export function DocumentItem({ title, meta }: DocumentItemProps) {
           <p className="text-xs text-muted-foreground">{meta}</p>
         </div>
       </div>
-      <button
-        type="button"
-        aria-label={`Baixar ${title}`}
-        className="rounded-lg p-2 text-[#1565d8] transition-colors hover:bg-blue-50"
-      >
-        <Download className="size-5" aria-hidden="true" />
-      </button>
+
+      {url ? (
+        <a
+          href={url}
+          download={title}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Baixar ${title}`}
+          className="rounded-lg p-2 text-[#1565d8] transition-colors hover:bg-blue-50"
+        >
+          <Download className="size-5" aria-hidden="true" />
+        </a>
+      ) : (
+        <button
+          type="button"
+          disabled
+          aria-label="Arquivo indisponível"
+          className="rounded-lg p-2 text-gray-300 cursor-not-allowed"
+        >
+          <Download className="size-5" aria-hidden="true" />
+        </button>
+      )}
     </div>
   )
 }

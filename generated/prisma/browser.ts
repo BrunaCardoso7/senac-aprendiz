@@ -42,3 +42,13 @@ export type Transacao = Prisma.TransacaoModel
  * 
  */
 export type Meta = Prisma.MetaModel
+/**
+ * Model Ajuda
+ * 
+ */
+export type Ajuda = Prisma.AjudaModel
+/**
+ * Model Atestado
+ * 
+ */
+export type Atestado = Prisma.AtestadoModel

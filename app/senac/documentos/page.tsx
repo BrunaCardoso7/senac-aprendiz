@@ -1,3 +1,7 @@
+"use client"
+
+import { useRouter } from "next/navigation"
+import { ChevronRight } from "lucide-react"
 import { AtestadoItem } from "@/components/global/atestado-items"
 import { DocumentItem } from "@/components/global/document-items"
 import { DocumentsHeader } from "@/components/global/documents-headers"
@@ -24,6 +28,8 @@ const atestados = [
 ]
 
 export default function Page() {
+  const router = useRouter()
+
   return (
     <main className="min-h-screen bg-[#f5f7fa] px-4 py-24">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
@@ -38,7 +44,19 @@ export default function Page() {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-base font-bold text-foreground">Atestados Enviados</h2>
+          {/* Header com botão ver todos */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-bold text-foreground">Atestados Enviados</h2>
+            <button
+              type="button"
+              onClick={() => router.push("/senac/atestados")}
+              className="flex items-center gap-1 text-sm font-medium text-[#1a6bb5] hover:underline"
+            >
+              Ver todos
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+
           {atestados.map((item) => (
             <AtestadoItem
               key={item.title}

@@ -388,7 +388,9 @@ export const ModelName = {
   Contrato: 'Contrato',
   Denuncia: 'Denuncia',
   Transacao: 'Transacao',
-  Meta: 'Meta'
+  Meta: 'Meta',
+  Ajuda: 'Ajuda',
+  Atestado: 'Atestado'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "contrato" | "denuncia" | "transacao" | "meta"
+    modelProps: "user" | "contrato" | "denuncia" | "transacao" | "meta" | "ajuda" | "atestado"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -778,6 +780,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Ajuda: {
+      payload: Prisma.$AjudaPayload<ExtArgs>
+      fields: Prisma.AjudaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AjudaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AjudaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        findFirst: {
+          args: Prisma.AjudaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AjudaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        findMany: {
+          args: Prisma.AjudaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>[]
+        }
+        create: {
+          args: Prisma.AjudaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        createMany: {
+          args: Prisma.AjudaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AjudaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>[]
+        }
+        delete: {
+          args: Prisma.AjudaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        update: {
+          args: Prisma.AjudaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        deleteMany: {
+          args: Prisma.AjudaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AjudaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AjudaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>[]
+        }
+        upsert: {
+          args: Prisma.AjudaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AjudaPayload>
+        }
+        aggregate: {
+          args: Prisma.AjudaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAjuda>
+        }
+        groupBy: {
+          args: Prisma.AjudaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AjudaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AjudaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AjudaCountAggregateOutputType> | number
+        }
+      }
+    }
+    Atestado: {
+      payload: Prisma.$AtestadoPayload<ExtArgs>
+      fields: Prisma.AtestadoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AtestadoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AtestadoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        findFirst: {
+          args: Prisma.AtestadoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AtestadoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        findMany: {
+          args: Prisma.AtestadoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>[]
+        }
+        create: {
+          args: Prisma.AtestadoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        createMany: {
+          args: Prisma.AtestadoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AtestadoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>[]
+        }
+        delete: {
+          args: Prisma.AtestadoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        update: {
+          args: Prisma.AtestadoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        deleteMany: {
+          args: Prisma.AtestadoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AtestadoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AtestadoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>[]
+        }
+        upsert: {
+          args: Prisma.AtestadoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AtestadoPayload>
+        }
+        aggregate: {
+          args: Prisma.AtestadoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAtestado>
+        }
+        groupBy: {
+          args: Prisma.AtestadoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AtestadoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AtestadoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AtestadoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -877,6 +1027,31 @@ export const MetaScalarFieldEnum = {
 } as const
 
 export type MetaScalarFieldEnum = (typeof MetaScalarFieldEnum)[keyof typeof MetaScalarFieldEnum]
+
+
+export const AjudaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  nome: 'nome',
+  descricao: 'descricao',
+  createdAt: 'createdAt'
+} as const
+
+export type AjudaScalarFieldEnum = (typeof AjudaScalarFieldEnum)[keyof typeof AjudaScalarFieldEnum]
+
+
+export const AtestadoScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  url: 'url',
+  publicId: 'publicId',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type AtestadoScalarFieldEnum = (typeof AtestadoScalarFieldEnum)[keyof typeof AtestadoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1093,6 +1268,8 @@ export type GlobalOmitConfig = {
   denuncia?: Prisma.DenunciaOmit
   transacao?: Prisma.TransacaoOmit
   meta?: Prisma.MetaOmit
+  ajuda?: Prisma.AjudaOmit
+  atestado?: Prisma.AtestadoOmit
 }
 
 /* Types for Logging */
