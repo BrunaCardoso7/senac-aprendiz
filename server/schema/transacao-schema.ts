@@ -20,9 +20,10 @@ export const transacaoSchema = z.object({
   data: z.coerce.date(),
 
   descricao: z
-    .string()
-    .max(500, "Descrição muito longa")
-    .optional(),
+  .string()
+  .max(500, "Descrição muito longa")
+  .optional()
+  .transform(v => v === "" ? undefined : v),
 
   tipo_transacao: tipoTransacaoSchema.default("ENTRADA"),
 });

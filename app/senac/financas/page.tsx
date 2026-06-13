@@ -129,6 +129,7 @@ export default function FinancaPage() {
           Meta
         </button>
       </div>
+
       <Tabs defaultValue="dashboard" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
@@ -171,14 +172,14 @@ export default function FinancaPage() {
               />
               <RecentTransactions
                 transactions={
-                  transacoesPeriodo && transacoesPeriodo.length > 0
-                    ? transacoesPeriodo.map((t: any) => ({
-                        id: t.id,
-                        amount: t.valor,
-                        category: t.categoria,
-                        date: new Date(t.data).toLocaleDateString('pt-BR'),
-                      }))
-                    : []
+                  transacoesPeriodo?.map((t: any) => ({
+                    id: t.id,
+                    amount: t.valor,
+                    category: t.categoria,
+                    descricao: t.descricao,
+                    date: new Date(t.data).toLocaleDateString('pt-BR'),
+                    tipo_transacao: t.tipo_transacao, // ← corrigido
+                  })) ?? []
                 }
               />
             </div>
