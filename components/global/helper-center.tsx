@@ -41,7 +41,7 @@ export default function SuportePage() {
       </header>
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="relative mt-4">
+        {/* <div className="relative mt-4">
           <Search
             className="pointer-events-none absolute left-3 top-1/2 size-5 -translate-y-1/2 text-muted-foreground"
             aria-hidden="true"
@@ -54,9 +54,9 @@ export default function SuportePage() {
             aria-label="Buscar dúvidas"
             className="w-full rounded-lg border border-border bg-card py-3 pl-11 pr-4 text-sm text-card-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/30"
           />
-        </div>
+        </div> */}
 
-        <div className="my-4 flex flex-col gap-6">
+        <div className=" flex flex-col gap-6">
           {!isSearching &&
             faqData.map((category) => (
               <section key={category.category}>

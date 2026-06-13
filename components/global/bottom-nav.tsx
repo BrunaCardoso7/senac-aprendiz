@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, DollarSign, FileCheck, HelpCircle, User } from "lucide-react"
+import { Home, DollarSign, FileCheck, HelpCircle, User, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { id: "home",       label: "Home",       icon: Home,       href: "/senac/home" },
   { id: "financas",   label: "Finanças",   icon: DollarSign, href: "/senac/financas" },
   { id: "documentos", label: "Documentos", icon: FileCheck,  href: "/senac/documentos" },
-  { id: "suporte",    label: "Suporte",    icon: HelpCircle, href: "/senac/suporte" },
+  { id: "suporte",    label: "Suporte",    icon: Heart,      href: "/senac/suporte" },
   { id: "perfil",     label: "Perfil",     icon: User,       href: "/senac/perfil" },
 ]
 

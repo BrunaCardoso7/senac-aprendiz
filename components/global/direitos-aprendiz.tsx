@@ -41,7 +41,7 @@ const direitos: Direito[] = [
     icon: DollarSign,
     iconBg: "bg-emerald-50",
     iconColor: "text-emerald-600",
-    rota: "/senac/financas",
+    rota: "",
   },
   {
     titulo: "Férias",
@@ -49,7 +49,7 @@ const direitos: Direito[] = [
     icon: Calendar,
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
-    rota: "/senac/seus-direitos",
+    rota: "",
   },
   {
     titulo: "Salário",
@@ -57,7 +57,7 @@ const direitos: Direito[] = [
     icon: DollarSign,
     iconBg: "bg-amber-50",
     iconColor: "text-amber-600",
-    rota: "/senac/financas",
+    rota: "",
   },
   {
     titulo: "Vale-Transporte",
@@ -65,7 +65,7 @@ const direitos: Direito[] = [
     icon: Briefcase,
     iconBg: "bg-violet-50",
     iconColor: "text-violet-600",
-    rota: "/senac/documentos",
+    rota: "",
   },
   {
     titulo: "Jornada de Trabalho",
@@ -73,7 +73,7 @@ const direitos: Direito[] = [
     icon: Clock,
     iconBg: "bg-rose-50",
     iconColor: "text-rose-600",
-    rota: "/senac/seus-direitos",
+    rota: "",
   },
   {
     titulo: "13º Salário",
@@ -81,7 +81,7 @@ const direitos: Direito[] = [
     icon: ShieldCheck,
     iconBg: "bg-indigo-50",
     iconColor: "text-indigo-600",
-    rota: "/senac/financas",
+    rota: "",
   },
   {
     titulo: "Registro em Carteira",
@@ -89,7 +89,7 @@ const direitos: Direito[] = [
     icon: Users,
     iconBg: "bg-cyan-50",
     iconColor: "text-cyan-600",
-    rota: "/senac/documentos",
+    rota: "",
   },
   {
     titulo: "Trabalho em Feriados",
@@ -97,7 +97,7 @@ const direitos: Direito[] = [
     icon: CalendarDays,
     iconBg: "bg-pink-50",
     iconColor: "text-pink-600",
-    rota: "/senac/seus-direitos",
+    rota: "",
   },
 ]
 
