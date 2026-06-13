@@ -7,6 +7,7 @@ import { LogOut } from "lucide-react"
 import { Button } from "@base-ui/react"
 import { useAuth } from "@/context/auth-context"
 import { useResumoTransacaoQuery } from "@/hooks/transacao/use-resumo-transacao-query"
+import Image from "next/image"
 
 interface DashboardHeaderProps {
   dayOfMonth: number
@@ -29,6 +30,13 @@ export function DashboardHeader({
 
   return (
     <header className="rounded-bl-2xl rounded-br-2xl bg-[#1a6bb5] p-4">
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={60}
+          height={60}
+          className="mx-auto mb-4 brightness-125 [filter:drop-shadow(0_0_12px_rgba(255,255,255,0.6))]"
+        />
       <div className="flex items-start justify-between">
         <UserGreeting dayOfMonth={dayOfMonth} userId={user?.id} />
         <Button
