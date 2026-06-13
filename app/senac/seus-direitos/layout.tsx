@@ -6,7 +6,7 @@ export default function SignupLayout({
   children: React.ReactNode;
 }>) {
   return <div className="min-h-full flex-1 flex-col">
-    <SubHeader title="Minhas Finanças" />
+    <SubHeader title="Seus direitos" />
     {children}
   </div>;
 }

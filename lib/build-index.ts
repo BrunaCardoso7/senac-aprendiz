@@ -4,13 +4,39 @@ import path from "path"
 
 const MAX_CHUNK_SIZE = 800
 
-// Divide por parágrafos respeitando o conteúdo semântico
-function chunkByParagraph(text: string, maxChunkSize = 800): string[] {
-  // Tenta dividir por padrões comuns em PDFs extraídos sem \n\n
+function cleanText(text: string): string {
+  return text
+    // Remove linhas que são só números separados por espaços (páginas do sumário)
+    .replace(/(\d{1,3}\s{2,}){3,}\d{1,3}/g, "")
+    // Remove espaços múltiplos entre palavras (artefato de PDF)
+    .replace(/[ \t]{2,}/g, " ")
+    // Remove linhas vazias extras
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+}
+
+function isChunkUtil(text: string): boolean {
+  // Remove se tiver sequências de 2+ pontos (sumário)
+  if (/\.{2,}/.test(text)) return false
+
+  // Remove se mais de 40% forem dígitos e espaços (páginas de sumário)
+  const dotsAndNumbers = (text.match(/[\d\s]/g) ?? []).length
+  if (dotsAndNumbers / text.length > 0.4) return false
+
+  // Remove cabeçalhos típicos de PDF
+  if (/^(da Aprendizagem|MINISTÉRIO|Ministro|Secretaria|Autores|APRESENTAÇÃO|Sumário)/i.test(text)) return false
+
+  // Remove se for só números de página
+  if (/^[\d\s]+$/.test(text)) return false
+
+  return true
+}
+
+function chunkByParagraph(text: string, maxChunkSize = MAX_CHUNK_SIZE): string[] {
   const paragraphs = text
-    .split(/(?<=[.?!])\s{2,}|(?=\d+\))|(?=TEMA \d+)/)  // divide por número de pergunta ou TEMA
+    .split(/(?<=[.?!])\s{2,}|(?=\d+\))|(?=TEMA \d+)/)
     .map(p => p.trim())
-    .filter(p => p.length > 50)
+    .filter(p => p.length > 50 && isChunkUtil(p))
 
   const chunks: string[] = []
   let current = ""
@@ -40,7 +66,6 @@ function tokenize(text: string): string[] {
 function buildTFIDF(chunks: string[]) {
   const tokenized = chunks.map(tokenize)
 
-  // Document frequency
   const df: Record<string, number> = {}
   for (const tokens of tokenized) {
     for (const t of new Set(tokens)) {
@@ -49,11 +74,9 @@ function buildTFIDF(chunks: string[]) {
   }
 
   return tokenized.map((tokens, i) => {
-    // Term frequency
     const tf: Record<string, number> = {}
     for (const t of tokens) tf[t] = (tf[t] ?? 0) + 1
 
-    // TF-IDF vector
     const vec: Record<string, number> = {}
     for (const [t, count] of Object.entries(tf)) {
       vec[t] = (count / tokens.length) * Math.log(chunks.length / (df[t] ?? 1))
@@ -75,8 +98,11 @@ function main() {
   console.log("📖 Lendo manual.txt...")
   const manualText = fs.readFileSync(inputPath, "utf-8")
 
+  console.log("🧹 Limpando texto...")
+  const cleanedText = cleanText(manualText)
+
   console.log("✂️  Dividindo em chunks...")
-  const chunks = chunkByParagraph(manualText)
+  const chunks = chunkByParagraph(cleanedText)
 
   console.log("🔢 Calculando TF-IDF...")
   const index = buildTFIDF(chunks)
@@ -86,14 +112,12 @@ function main() {
   console.log(`\n✅ Indexados ${chunks.length} chunks`)
   console.log(`📁 Salvo em public/chunks.json`)
 
-  // Preview dos primeiros 3 chunks
-  console.log("\n--- Preview dos primeiros 3 chunks ---")
-  chunks.slice(0, 3).forEach((c, i) => {
+  console.log("\n--- Preview dos primeiros 5 chunks ---")
+  chunks.slice(0, 5).forEach((c, i) => {
     console.log(`\nChunk ${i} (${c.length} chars):`)
-    console.log(c.slice(0, 150) + (c.length > 150 ? "..." : ""))
+    console.log(c.slice(0, 200) + (c.length > 200 ? "..." : ""))
   })
 
-  // Estatísticas
   const sizes = chunks.map(c => c.length)
   const avg = Math.round(sizes.reduce((a, b) => a + b, 0) / sizes.length)
   const max = Math.max(...sizes)
