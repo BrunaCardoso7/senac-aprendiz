@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { userSchema } from '@/server/schema/user-schema'
+import { createUserSchema, userSchema } from '@/server/schema/user-schema'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    const parsed = userSchema.safeParse(body)
+    const parsed = createUserSchema.safeParse(body)
     if (!parsed.success) {
       return NextResponse.json({ detail: parsed.error.flatten() }, { status: 400 })
     }
@@ -68,15 +68,15 @@ export async function POST(req: NextRequest) {
     if (existingUser) {
       return NextResponse.json(
         {
-          message: 'Já existe um usuário com esta matrícula',
-        },
-        {
-          status: 409,
-        }
-      )
-    }
-    const hashedPassword = await bcrypt.hash(parsed.data.password, 10)
-    
+            message: 'Já existe um usuário com esta matrícula',
+          },
+          {
+            status: 409,
+          }
+        )
+      }
+      const hashedPassword = await bcrypt.hash(parsed.data.password, 10)
+      
     const user = await prisma.user.create({
       data: {
         name: parsed.data.name,
