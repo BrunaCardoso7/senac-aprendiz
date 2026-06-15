@@ -7,7 +7,7 @@ export default function SignupLayout({
 }>) {
   return (
     <div>
-      <div className="min-h-full flex flex-col">
+      <div className="min-h-full flex flex-col  px-4">
         <SubHeader title="Suporte" />
         {children}
       </div>
