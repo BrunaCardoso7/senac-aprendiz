@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { contratoSchema } from "@/server/schema/contrato-schema";
 
-export async function PATCH(req: NextRequest) {
+export async function PATCH(
+  req: NextRequest,
+   { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const { searchParams } = new URL(req.url);
-    const contratoId = searchParams.get("id");
+    const { id: contratoId } = await params;
 
     if (!contratoId) {
       return NextResponse.json(

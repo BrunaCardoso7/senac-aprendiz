@@ -33,7 +33,7 @@ export default function ProfilePage() {
         <StudentProfileCard data={contrato} />
         <SettingsSection onEditProfile={() => setEditing(true)} />
       </div>
-  <EditProfileModal
+      <EditProfileModal
         open={editing}
         onClose={() => setEditing(false)}
         contrato={contrato}

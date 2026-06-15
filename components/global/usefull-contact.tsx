@@ -8,9 +8,7 @@ type Contact = {
 const contacts: Contact[] = [
   { name: "Coordenação Senac", phone: "(11) 3555-0100" },
   { name: "Disque 100 — Direitos Humanos", phone: "100" },
-  { name: "Central de Atendimento à Mulher", phone: "180" },
   { name: "Centro de Valorização da Vida", phone: "188" },
-
 ]
 
 export function UsefulContacts() {

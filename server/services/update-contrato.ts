@@ -5,7 +5,7 @@ async function updateContrato(
   data: ContratoSchema
 ) {
   const res = await fetch(`/api/contrato/update/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },

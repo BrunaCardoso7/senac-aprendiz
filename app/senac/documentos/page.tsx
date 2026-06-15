@@ -79,7 +79,7 @@ export default function Page() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f7fa] px-4 py-24">
+    <main className="min-h-screen px-4 py-24">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <DocumentsHeader />
         <UploadButton />
