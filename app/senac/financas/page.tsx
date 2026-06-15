@@ -106,7 +106,7 @@ export default function FinancaPage() {
   )
 
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-6 py-24">
+    <div className="mx-auto flex max-w-5xl flex-col gap-6 py-24 ">
       <BalanceCard
         saldoDisponivel={data?.saldo}
         receitas={data?.receita}
