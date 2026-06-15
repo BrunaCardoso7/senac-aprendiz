@@ -3,12 +3,13 @@ import { Phone } from "lucide-react"
 type Contact = {
   name: string
   phone: string
+  hour: string
 }
 
 const contacts: Contact[] = [
-  { name: "Coordenação Senac", phone: "(11) 3555-0100" },
-  { name: "Disque 100 — Direitos Humanos", phone: "100" },
-  { name: "Centro de Valorização da Vida", phone: "188" },
+  { name: "Coordenação Senac", phone: "(11) 3555-0100", hour: "Seg-Sex 8h-18h" },
+  { name: "Recursos Humanos", phone: "(86) 3229-0001 - (86) 3229-0009", hour: "24 horas" },
+  { name: "Centro de Valorização da Vida", phone: "188", hour: "24 horas" },
 ]
 
 export function UsefulContacts() {
@@ -31,6 +32,7 @@ export function UsefulContacts() {
               <span className="flex flex-col">
                 <span className="font-semibold text-foreground">{contact.name}</span>
                 <span className="text-sm font-medium text-blue-600">{contact.phone}</span>
+                <span className="text-xs font-medium text-gray-600">{contact.hour}</span>
               </span>
               <Phone className="ml-auto size-5 text-green-600" aria-hidden="true" />
             </a>
