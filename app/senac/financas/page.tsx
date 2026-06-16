@@ -26,6 +26,7 @@ import { useState } from "react"
 import { SavingsGoalCard } from "@/components/global/save-goal-card"
 import { ExpenseChart } from "@/components/global/expense-chart"
 import EducationDetail from "@/components/global/education-detail"
+import { FinancialTips } from "@/components/global/financial-tips"
 
 const navegarMes = (prev: string, direcao: 'anterior' | 'proximo') => {
   const [year, month] = prev.split('-').map(Number)
@@ -157,6 +158,7 @@ export default function FinancaPage() {
           ) : (
             <CardFinanceControl />
           )}
+          <FinancialTips />
           <EducationDetail />
         </TabsContent>
 

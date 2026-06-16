@@ -16,8 +16,8 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react"
-import { PerguntasFrequentes } from "./perguntas-frequentes"
 import { HelpBanner } from "./helper-banner"
+import { PerguntasFrequentes } from "./perguntas-frequente"
 
 type Direito = {
   titulo: string
