@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { useDeleteTransacaoMutation } from "@/hooks/transacao/use-transacao-delete-mutation"
 import { toast } from "sonner"
+import { useAuth } from "@/context/auth-context"
 
 interface Transaction {
   id: string
@@ -79,8 +80,8 @@ export function RecentTransactions({
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [detailDialogOpen, setDetailDialogOpen] = useState(false)
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null)
-
-  const deleteMutation = useDeleteTransacaoMutation()
+  const { user } = useAuth()
+  const deleteMutation = useDeleteTransacaoMutation(user?.id)
 
   const formatCurrency = (value: number) =>
     value.toLocaleString("pt-BR", {

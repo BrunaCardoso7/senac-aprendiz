@@ -40,7 +40,7 @@ export function useTransacoesPorPeriodo(
   const dataFim = `${year}-${String(month).padStart(2, '0')}-${String(ultimoDia).padStart(2, '0')}`
 
   return useQuery({
-    queryKey: ['transacoes', userId, dataInicio, dataFim],
+    queryKey: ['transacoes', userId],
     queryFn: () => fetchTransacoesByDateRange(userId, dataInicio, dataFim),
     enabled: !!userId,
   })
